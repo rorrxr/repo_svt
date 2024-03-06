@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	
+	<form action = "codeUpdt" method="post">
+		
+		<label>seq : </label>
+		<input type="text" name = "seq" th:value="${item.seq}"><br>
+		
+		<label>name : </label>
+		<input type="text" name = "name" th:value="${item.name}"><br>
+
+		<input type="submit" placeholder="수정" />
+	</form>
+
+
+</body>
+</html>

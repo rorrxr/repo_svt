@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<a th:href="@{/codeGroupRegForm}" th:text="등록"></a>
+
+    <table>
+		<tr>
+			
+			<td>ch</td>
+			<td>#</td> <!-- 타임리프를 사용하겠다는 뜻/ HTML에 데이터베이스에서 불러온 내용을 집어넣겠다는 내용-->
+			<td>del</td>
+			<td>seq</td>
+			<td>name</td>
+			<td>count</td>
+			<td>insertDate</td>
+			<!-- <td>Del</td> -->
+		</tr>
+		<tr th:if="${#lists.isEmpty(list)}">
+			<td colspan="6">There is no data</td>
+		</tr>
+		
+		<tr th:if="${!#lists.isEmpty(list)}" th:each="list : ${list}"> <!-- FOR문처럼 LIST를 사용하게다는뜻-->
+			<td></td>
+			<td></td>
+<!--			<td th:text = "${list.delYn}"></td>-->
+			<td th:if="${list.delYn eq 1}">Y</td>
+			<td th:unless="${list.delYn eq 1}">N</td>
+			
+			<td th:text = "${list.seq}"></td>
+<!--			<td th:text = "${list.name}"></td>
+-->	
+			<td><a th:href = "@{/codeGroupView(seq = ${list.seq}, name = ${list.name})}" th:text = "${list.name}" ></a></td>
+
+			<td th:text = "${list.seqCount}"></td>
+			<td th:text = "${#dates.format(list.insertDate, 'yyyy-MM-dd HH:mm:ss')}"></td>			
+		</tr>
+	</table>
+</body>
+</html>

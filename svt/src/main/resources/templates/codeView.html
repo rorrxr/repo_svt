@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	
+	
+	<form action = "codeDelete" method="post">
+
+		<input type="text" name = "seq" th:value="${item.seq}"><br>
+		<input type="text" name = "name" th:value="${item.name}"><br>
+	
+		<a th:href="@{/codeXdmList}" th:text="back"></a>
+		<a th:href="@{/codeForm(seq = ${item.seq})}" th:text="수정"></a>
+		<button type ="submit">전체 삭제</button>
+	</form>
+	
+	<form action = "codeUpdtDel" method="post">
+		<input type="text" name = "seq" th:value="${item.seq}"><br>
+		<input type="text" name = "name" th:value="${item.name}"><br>
+
+		<a th:href="@{/codeXdmList}" th:text="back"></a>
+		<a th:href="@{/codeForm(seq = ${item.seq})}" th:text="수정"></a>
+		<button type ="submit">데이터 삭제</button>
+	</form>
+
+</body>
+</html>

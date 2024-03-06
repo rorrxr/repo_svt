@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<a th:href="@{/codeRegForm}" th:text="등록"></a>
+
+    <table>
+		<tr>
+			<td>ch</td>
+			<td>#</td>
+			
+			<td>그룹seq</td>
+			<td>그룹이름</td>
+			
+			<td>코드삭제여부</td>
+			<td>코드seq</td>
+			<td>코드이름</td>
+<!--			<td>count</td>
+-->			<td>코드입력일</td>
+			<!-- <td>Del</td> -->
+		</tr>
+		<tr th:if="${#lists.isEmpty(list)}">
+			<td colspan="8">There is no data</td>
+		</tr>
+		
+		<tr th:if="${!#lists.isEmpty(list)}" th:each="list : ${list}">
+			<td></td>
+			<td></td>
+			
+			<td th:text = "${list.codeGroup_seq}"></td>
+			<td th:text = "${list.codeGroupName}"></td>
+			
+			<td th:if="${list.delYn eq 1}">Y</td>
+			<td th:unless="${list.delYn eq 1}">N</td>
+			
+			<td th:text = "${list.seq}"></td>
+			<td><a th:href = "@{/codeView(seq = ${list.seq}, name = ${list.name}, codeGroup_seq = ${list.codeGroup_seq})}" th:text = "${list.name}" ></a></td>
+			<td th:text = "${#dates.format(list.insertDate, 'yyyy-MM-dd HH:mm:ss')}"></td>			
+		</tr>
+	</table>
+</body>
+</html>

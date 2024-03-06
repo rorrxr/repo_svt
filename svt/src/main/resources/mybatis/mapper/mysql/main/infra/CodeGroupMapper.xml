@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.foodmap.infra.codeGroup.CodeGroupDao">
+
+	<resultMap id="resultMapObj" type="com.foodmap.infra.codeGroup.CodeGroupDto"></resultMap>
+
+    <select id="selectList" resultMap="resultMapObj">
+        SELECT
+            a.seq
+            ,a.name
+            ,a.insertDate
+            ,a.deleteDate
+            ,a.delYn
+            ,(select count(aa.seq) from code aa where aa.codeGroup_seq = a.seq) as seqCount
+           	<!-- (select count(aa.seq) from code aa where 1=1 and aa.cdDelNy = 0 and aa.codeGroup_seq = a.seq) as seqCount -->
+         FROM codegroup a
+        WHERE 1=1
+        ORDER BY a.seq DESC
+    </select>
+	 
+	 <select id="selectOne" resultMap="resultMapObj">
+        SELECT
+            a.seq
+            ,a.name
+            ,a.insertDate
+            ,a.deleteDate
+            ,a.delYn
+            ,(select count(aa.seq) from code aa where aa.codeGroup_seq = a.seq) as seqCount
+           	<!-- (select count(aa.seq) from code aa where 1=1 and aa.cdDelNy = 0 and aa.codeGroup_seq = a.seq) as seqCount -->
+         FROM codegroup a
+        WHERE 1=1
+        AND a.seq = #{seq}
+    </select>
+	
+	<insert id="insert">
+        INSERT INTO codeGroup(
+            name,
+            insertDate,
+            deleteDate,
+            delYn
+         )VALUES(
+         	#{name},
+         	now(),
+         	now(),
+         	0
+         )
+    </insert>
+	 
+	 <update id="update">
+        UPDATE codeGroup
+        set name = #{name}
+        where seq = #{seq} 
+    </update> 
+    
+    <update id="updateDelete">
+        UPDATE codeGroup
+        set delYn = 1
+        where seq = #{seq} 
+    </update> 
+    
+    <delete id="delete">
+        delete from codeGroup
+        where seq = #{seq} 
+    </delete> 
+    
+</mapper>
