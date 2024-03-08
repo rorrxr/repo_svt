@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.foodmap.infra.code.CodeDto;
+
 @Service
 public class CodeGroupService {
 //	CodeGroupDao codeGroupDao;
@@ -49,9 +51,14 @@ public class CodeGroupService {
 //		return dao.delete(dto);
 //	}
 
-	public void delete(String seq) {
+//	public int delete(CodeDto dto) {
+//		// TODO Auto-generated method stub
+//		return dao.delete(dto);
+//	}
+	
+	public int delete(CodeGroupDto dto) {
 		// TODO Auto-generated method stub
-		dao.delete(seq);
+		return dao.delete(dto);
 	}
 
 }

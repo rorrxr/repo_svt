@@ -532,108 +532,40 @@
 										<div class="card-title">Form Layout</div>
 									</div>
 									<div class="card-body">
-											<form action = "codeGroupUpdt" method="post">
+										<form action = "codeGroupUpdt" method="post">
 
 										<!-- Row start -->
 										<div class="row gx-3">
 											<div class="col-sm-6 col-12">
 												<div class="was-validated">
 													<label for="validationCustom01" class="form-label">seq</label>
-													<input type="text" class="form-control" id="validationCustom01" value="" required=""
+													<input type="text" class="form-control" id="validationCustom01" 
+													th:value="${item.seq}" required=""
 													name = "seq">
 												</div>
 											</div>
 											<div class="col-sm-6 col-12">
 												<div class="was-validated">
 													<label for="validationCustom01" class="form-label">name</label>
-													<input type="text" class="form-control" id="validationCustom01" value="" required=""
+													<input type="text" class="form-control" id="validationCustom01" th:value="${item.name}" required=""
 													name = "name" >
 												</div>
 											</div>
 											
 										</div>
-										<!--<div class = "row gx-3">
-											<div class="col-sm-6 col-12">
-												<div class="was-validated">
-													<label for="validationCustom01" class="form-label">전화번호</label>
-													<input type="text" class="form-control" id="validationCustom01" value="" required="">
-												</div>
-											</div>
-											<div class="col-sm-6 col-12">
-												<div class="was-validated">
-
-													<label for="validationCustom03" class="form-label">성별</label>
-													<select class="form-select" id="validationCustom04" required="">
-														<option selected="" disabled="" value="">Choose...</option>
-														<option>남자</option>
-														<option>여자</option>
-														<option>그외</option>
-													</select>
-													<div class="invalid-feedback">Please select a valid state.</div>
-												
-
-											</div>
-										</div>
-										<div class = "row gx-3">
-											<div class="col-sm-6 col-12">
-												<div class="was-validated">
-													<label for="validationCustom03" class="form-label">나라</label>
-													<select class="form-select" id="validationCustom04" required="">
-														<option selected="" disabled="" value="">Choose...</option>
-														<option>대한민국</option>
-														<option>일본</option>
-														<option>미국</option>
-													</select>
-													<div class="invalid-feedback">Please select a valid state.</div>
-												
-												</div>
-											</div>
-											<div class="col-sm-6 col-12">
-												<div class="was-validated">
-													<label for="validationCustom01" class="form-label">Province/Territory</label>
-													<input type="text" class="form-control" id="validationCustom01" value="" required="">
-
-												</div>
-											</div>
-										</div>
-										<div class = "row gx-3">
-											<div class="col-sm-6 col-12">
-												<div class="was-validated">
-													<label for="validationCustom03" class="form-label">Industry Type</label>
-													<select class="form-select" id="validationCustom04" required="">
-														<option selected="" disabled="" value="">Choose...</option>
-														<option>...</option>
-													</select>
-													<div class="invalid-feedback">Please select a valid state.</div>
-												</div>
-											</div>
-											<div class="col-xl- col-sm-6 col-12">
-												<div class="was-validated">
-													<label for="validationCustom01" class="form-label">Postal Code</label>
-													<input type="text" class="form-control" id="validationCustom01" value="" required="">
-												</div>
-											</div>
-											
-										</div>	
-											
-										</div>
-										<div>
-											<div class="col-sm-6 col-12">
-												<div class="was-validated">
-													<label for="validationTextarea" class="form-label">Message</label>
-													<textarea class="form-control is-invalid" id="validationTextarea"
-												placeholder="Required example textarea" required=""></textarea>
-												</div>
-											</div>
-										</div>
-										 Row end 
--->
 										<!-- Form actions footer start -->
 										<div class="form-actions-footer">
-												<button class="btn btn-light" data-bs-toggle="modal"
-												data-bs-target="#exampleModal1 ">취소</button>
-												<button class="btn btn-success submit" data-bs-toggle="modal"
-												data-bs-target="#exampleModal2 ">데이터 수정</button>
+											<div class="col gy-2">
+												<button class="btn btn-light"><a th:href="@{codeGroupXdmList}" th:text="뒤로"></a></button>
+											</div>
+											<div class="col gy-2" align="right">
+												<button type="submit" class="btn btn-primary" onclick="javascript: form.action='codeGroupDelete';">데이터 삭제</button>
+												<button type="submit" class="btn btn-primary" onclick="javascript: form.action='codeGroupUpdtDel';">N,Y수정</button>
+												<button type="submit" class="btn btn-primary" onclick="javascript: form.action='codeGroupUpdt';">저장</button>
+											</div>
+<!--												<button class="btn btn-light"><a th:href="@{codeGroupDelete}" th:text="삭제"></a></button>-->
+<!--												<button class="btn btn-success submit" data-bs-toggle="modal"-->
+<!--												data-bs-target="#exampleModal2 ">데이터 수정</button>-->
 											
 										</div>
 										<!-- Form actions footer end -->
