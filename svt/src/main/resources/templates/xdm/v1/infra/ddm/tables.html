@@ -784,9 +784,12 @@
 														name='RowCheck' 
 														th:value='${list.seq}'/></th>
 													<td th:text="${list.seq}"></td>
-													<td><a th:href="@{codeGroupLogin}" th:text="${list.name}"></a></td>
-													<td th:text="${list.delYn}"></td>
-													
+													<td>
+														<a th:href="@{/codeGroupForm(seq=${list.seq},name=${list.name})}" th:text="${list.name}"></a>
+													</td>
+													<td>
+														<a th:href="@{/codeGroupUpdtDel(seq=${list.seq},name=${list.name})}" th:text="${list.delYn}"></a>
+													</td>
 													<td><fmt:formatDate value ="${list.seq}" pattern ="yyyy/mm/dd"></td>
 													<td th:text="${list.name}"></td>
 													<td th:text="${list.delYn}"></td>

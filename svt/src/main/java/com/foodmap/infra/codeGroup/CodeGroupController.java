@@ -47,7 +47,7 @@ public class CodeGroupController {
 //		model.addAttribute("item", service.selectOne(dto));
 		model.addAttribute("item", service.selectOne(dto));
 
-		return "/xdm/v1/infra/codeGroup/codeGroupForm";
+		return "xdm/v1/infra/ddm/form-layout2";
 	}
 	
 	@RequestMapping(value = "/codeGroupLogin")
@@ -83,24 +83,24 @@ public class CodeGroupController {
 		return "redirect:/codeGroupXdmList";
 	}
 	
-	@RequestMapping(value = "/codeGroupDelete")
-	public String codeGroupDelete(CodeGroupDto dto, Map<String,Object> commandMap) throws Exception{
-		int result=1;
-        try {
-            int cnt = Integer.parseInt((String) commandMap.get("CNT"));
-            String rprtOdr = (String)commandMap.get("RPRT_ODR");
-            String [] strArray = rprtOdr.split(",");
-            for(int i=0; i<cnt; i++) {
-                int temp = Integer.parseInt((String)strArray[i]);
-                commandMap.put("RPRT_ODR", temp);
-               service.delete(dto, "ReportDAO.deleteReport", commandMap);
-            }
-        } catch (Exception e) {
-//            log.debug(e.getMessage());
-            result=0;
-        }
-        return "redirect:/codeGroupXdmList";
-	}
+//	@RequestMapping(value = "/codeGroupDelete")
+//	public String codeGroupDelete(CodeGroupDto dto, Map<String,Object> commandMap) throws Exception{
+//		int result=1;
+//        try {
+//            int cnt = Integer.parseInt((String) commandMap.get("CNT"));
+//            String rprtOdr = (String)commandMap.get("RPRT_ODR");
+//            String [] strArray = rprtOdr.split(",");
+//            for(int i=0; i<cnt; i++) {
+//                int temp = Integer.parseInt((String)strArray[i]);
+//                commandMap.put("RPRT_ODR", temp);
+//               service.delete(dto, "ReportDAO.deleteReport", commandMap);
+//            }
+//        } catch (Exception e) {
+////            log.debug(e.getMessage());
+//            result=0;
+//        }
+//        return "redirect:/codeGroupXdmList";
+//	}
 	
 	@RequestMapping(value = "/delete")
 	public String ajaxTest(HttpServletRequest request) {

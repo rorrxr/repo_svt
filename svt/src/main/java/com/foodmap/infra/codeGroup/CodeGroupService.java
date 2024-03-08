@@ -45,9 +45,9 @@ public class CodeGroupService {
 		return dao.updateDelete(dto);
 	}
 	
-	public int delete(CodeGroupDto dto, String string, Map<String, Object> commandMap) {
-		return dao.delete(dto);
-	}
+//	public int delete(CodeGroupDto dto, String string, Map<String, Object> commandMap) {
+//		return dao.delete(dto);
+//	}
 
 	public void delete(String seq) {
 		// TODO Auto-generated method stub
