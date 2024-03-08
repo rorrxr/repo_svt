@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" >
+<html lang="ko"xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
@@ -61,8 +61,26 @@
 			
 		</script>
 
-		<script>
-
+		<script type="text/javascript">
+			$(function(){
+				var chkObj = document.getElementsByName("RowCheck");
+				var rowCnt = chkObj.length;
+				$("input[name='allCheck']").click(function(){
+					var chk_listArr = $("input[name = 'RowCheck']");
+					for(var i = 0; i < chk_listArr.length; i++){
+						chk_listArr[i].checked = this.checked;
+					}
+				});
+				$("input[name = 'RowCheck']").click(function(){
+					if($("input[name = 'RowCheck']:checked").length == rowCnt){
+						$("input[name = 'allCheck']")[0].checked = true;
+					}else{
+						$("input[name='allCheck']")[0].checked = false;
+					}
+				});
+			});
+			
+			
 			function checkSelectAll()  {
 			// 전체 체크박스
 			const checkboxes 
@@ -83,13 +101,48 @@
 			}
 
 			function selectAll(selectAll)  {
-			const checkboxes 
-				= document.getElementsByName('animal');
-			
-			checkboxes.forEach((checkbox) => {
-				checkbox.checked = selectAll.checked
-			})
+				const checkboxes 
+					= document.getElementsByName('animal');
+				
+				checkboxes.forEach((checkbox) => {
+					checkbox.checked = selectAll.checked
+				})
 			}
+			
+			 function deleteValue(){
+		        var url = "delete"; //컨트롤러로 보내고자 하는 URL
+		        var valueArr = new Array();
+		        var list = $("input[name='RowCheck']");
+		        
+		        for(var i = 0; i < list.length; i++){
+					if(list[i].checked){ // 선택되어 있으면 배열에 값을 저장함
+						valueArr.push(list[i].value);
+					}
+				}
+				
+				if(valueArr.length == 0){
+					alert("선택된 항목이 없습니다.");
+					
+				}else{
+					var chk = confirm("정말 삭제하시겠습니까?");
+					$.ajax({
+						url : url, // 전송 url
+						type : 'post', // post 방식
+						traditional : true, 
+						data:{
+							valueArr : valueArr //보내고자 하는 data 변수 설정
+						},
+						success:function(jdata){
+							if(jdata = 1){
+								alert("삭제 성공");
+							}else{
+								alert("삭제 실패");
+							}
+						}
+					});
+				}
+				
+		    }
 		</script>
 	</head>
 
@@ -712,9 +765,8 @@
 											<thead>
 												<tr>
 													<th><input type='checkbox'
-														name='selectall' 
-														value='selectall'
-														onclick='selectAll(this)'/></th>
+														id = "allCheck"
+														name='allCheck' /></th>
 													<th>seq</th>
 													<th>코드name</th>
 													<th>delYn</th>
@@ -726,16 +778,16 @@
 												</tr>
 											</thead>
 											<tbody>
+												<c:forEach items = ${list} var = "list">
 												<tr th:if="${#lists.isEmpty(List)}" th:each="list : ${list}">
 													<th><input type='checkbox'
-														name='animal' 
-														value='dog'
-														onclick='checkSelectAll()'/></th>
+														name='RowCheck' 
+														th:value='${list.seq}'/></th>
 													<td th:text="${list.seq}"></td>
-													<td th:text="${list.name}"></td>
+													<td><a th:href="@{codeGroupLogin}" th:text="${list.name}"></a></td>
 													<td th:text="${list.delYn}"></td>
 													
-													<td th:text="${list.seq}"></td>
+													<td><fmt:formatDate value ="${list.seq}" pattern ="yyyy/mm/dd"></td>
 													<td th:text="${list.name}"></td>
 													<td th:text="${list.delYn}"></td>
 													<td th:text="${list.seq}"></td>
@@ -747,7 +799,7 @@
 <!--													<td th:text="${list.seq}">$4500</td>-->
 <!--													<td th:text="${list.seq}">10/10/2019 4:30pm</td>-->
 												</tr>
-												
+												</c:forEach>
 											</tbody>
 										</table>
 								</div>
@@ -771,20 +823,17 @@
 							</div>
 								<div class = "row">
 									<div class = "col-sm-1">
-										<button type="button" class="btn btn-danger" data-bs-toggle="modal"
-										data-bs-target="#exampleModal" class = "btn btn-info btn-sm mb-1"
-                                                            data-bs-toggle="modal"
-                                                            th:data-bs-target="'#exampleModal' + ${list['seq']}"
-                                                            data-bs-target="#exampleModal1"><i class="bi bi-trash"></i></button></button>
+										<button type="button" class="btn btn-danger" onclick="deleteValue();" th:text="삭제"></a>
+											
+										</button>
 									</div>
 								
 
 									
 								<div class = "col-sm-10"> </div>
 									<div class = "col-sm-1">
-										<button class="btn btn-success" type="button" data-bs-toggle="modal" 
-										data-bs-target="#exampleModal2" style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: .8rem; 
-										--bs-btn-font-size: .90rem;"><i class="bi bi-plus"></i></button>
+										<button class="btn btn-success" type="button"><a th:href="@{codeGroupView}" th:text="추가"></a></button>
+									
 									</div>
 								</div>
 							</div>
