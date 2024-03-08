@@ -744,19 +744,16 @@
 										</div>
 										<!-- search e -->
 										<div class = "row g-2 px-2">
-											<div class = "col-sm-1">
-												<label>Total : </label>
-												<label>5</label>
-
+											<div class = "col-sm-1" align="left" style="margin-top: 15px;">
+												<label>Total : 5</label>
 											</div>
 											<div class = "col-sm-10"></div>
-											<div class = "col-sm-1">
+											<div class = "col-sm-1" align="right" style="margin-bottom: 15px;">
 												<select class="form-select" required="">
 												<option selected = "">5</option>
 												<option>10</option>
 												<option>15</option>
 												</select>
-												<br>
 											</div>
 										</div>
 								<div class="table-responsive">
@@ -771,10 +768,7 @@
 													<th>코드name</th>
 													<th>delYn</th>
 													<th>insertDate</th>
-													<th>deleteDate</th>
-<!--													<th>seq</th>-->
-<!--													<th>delyn</th>-->
-<!--													<th>코드name</th>-->
+													<th>updateDate</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -789,18 +783,11 @@
 													<td>
 														<a th:href="@{/codeGroupForm(seq=${list.seq},name=${list.name})}" th:text="${list.name}"></a>
 													</td>
-													<td th:if="${list.delYn eq 1}">N</td>
-    												<td th:unless="${list.delYn eq 1}">Y</td>
-<!--													<td><fmt:formatDate value ="${list.seq}" pattern ="yyyy/mm/dd"></td>-->
-													<td th:text="${list.insertDate}"></td>
-													<td th:text="${list.deleteDate}"></td>
-<!--												<td th:text="${list.seq}">
-<!--														<a th:href="@{/codeGroupDelForm(seq=${list.seq},name=${list.name})}" th:text="${list.seq}"></a>-->
+													<td th:if="${list.delYn eq 1}">Y</td>
+    												<td th:unless="${list.delYn eq 1}">N</td>
+													<td th:text="${#dates.format(list.insertDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+													<td th:text="${#dates.format(list.deleteDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 													</td>
-<!--													<td th:text="${list.seq}"></td>-->
-<!--													<td th:if="${list.delYn eq 1}">N</td>-->
-<!--    												<td th:unless="${list.delYn eq 1}">Y</td>-->
-<!--    												<td th:text="${list.name}"></td>-->
 												</tr>
 												</c:forEach>
 											</tbody>
