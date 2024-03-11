@@ -60,5 +60,7 @@ public class CodeGroupService {
 		// TODO Auto-generated method stub
 		return dao.delete(dto);
 	}
-
+    public List<CodeGroupDto> selectList(CodeGroupVo vo) { 
+    	return dao.selectList(vo); 
+    }
 }

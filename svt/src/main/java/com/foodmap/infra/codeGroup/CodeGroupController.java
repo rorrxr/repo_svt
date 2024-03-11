@@ -17,19 +17,19 @@ public class CodeGroupController {
 	CodeGroupService service;
 //	CodeGroupService codeGroupService;
 	
-	@RequestMapping(value = "/codeGroupXdmList")
-	public String codeGroupXdmList(Model model) throws Exception{
-//		List<CodeGroupDto> list = service.selectList();
-//		List<CodeGroupDto> codeGroupDtos = service.selectList();
-		
-//		for(CodeGroupDto a:codeGroupDtos) {
-//			System.out.println(a.getName());                                                     
-//		}
-		
-		model.addAttribute("list", service.selectList());
-
-		return "xdm/v1/infra/ddm/tables";
-	}
+//	@RequestMapping(value = "/codeGroupXdmList")
+//	public String codeGroupXdmList(Model model) throws Exception{
+////		List<CodeGroupDto> list = service.selectList();
+////		List<CodeGroupDto> codeGroupDtos = service.selectList();
+//		
+////		for(CodeGroupDto a:codeGroupDtos) {
+////			System.out.println(a.getName());                                                     
+////		}
+//		
+//		model.addAttribute("list", service.selectList());
+//
+//		return "xdm/v1/infra/ddm/tables";
+//	}
 
 	@RequestMapping(value = "/codeGroupView")
 	public String codeGroupView(CodeGroupDto dto, Model model) throws Exception{
@@ -95,6 +95,18 @@ public class CodeGroupController {
 	public String codeGroupDelete(CodeGroupDto dto) throws Exception{
 		service.delete(dto);
 		return "redirect:/codeGroupXdmList";
+	}
+	
+	@RequestMapping(value = "/codeGroupXdmList")
+	public String codeGroupXdmList(CodeGroupVo vo, Model model) throws Exception{
+	
+//		model.addAttribute("list", service.selectList(vo));
+
+		model.addAttribute("list", service.selectList(vo));
+
+		model.addAttribute("vo", vo);
+
+		return "xdm/v1/infra/ddm/tables";
 	}
 	
 //	@RequestMapping(value = "/codeGroupDelete")
