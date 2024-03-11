@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.foodmap.infra.codeGroup.CodeGroupDto;
+
 @Controller
 public class CodeController {
 	@Autowired
@@ -16,7 +18,7 @@ public class CodeController {
 	public String codeXdmList(Model model) throws Exception{
 		model.addAttribute("list", service.selectList());
 		
-		return "/xdm/v1/infra/code/codeXdmList";
+		return "xdm/v1/infra/ddm/tables2";
 	}
 	
 
@@ -26,8 +28,8 @@ public class CodeController {
 //		System.out.println("dto.getName() : " + dto.getName());		
 //		System.out.println("dto.getInsertDate() : " + dto.getInsertDate());		
 		model.addAttribute("item", service.selectOne(dto));
-
-		return "/xdm/v1/infra/code/codeView";
+		
+		return "xdm/v1/infra/ddm/form-layout5";
 	}
 	
 	@RequestMapping(value = "/codeForm")
@@ -36,7 +38,7 @@ public class CodeController {
 //		model.addAttribute("item", service.selectOne(dto));
 		model.addAttribute("item", service.selectOne(dto));
 
-		return "/xdm/v1/infra/code/codeForm";
+		return "xdm/v1/infra/ddm/form-layout6";
 	}
 	
 	@RequestMapping(value = "/codeLogin")
@@ -51,6 +53,14 @@ public class CodeController {
 //		System.out.println(dto.getName());
 
 		return "/xdm/v1/infra/code/codeRegForm";
+	}
+	
+	@RequestMapping(value = "/codeDelForm")
+	public String codeDelForm(CodeDto dto) throws Exception{
+//		System.out.println(dto.getSeq());
+//		System.out.println(dto.getName());
+
+		return "xdm/v1/infra/ddm/form-layout4";
 	}
 	
 	@RequestMapping(value = "/codeInsert")

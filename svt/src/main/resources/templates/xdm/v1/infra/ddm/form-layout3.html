@@ -532,14 +532,15 @@
 										<div class="card-title">Form Layout</div>
 									</div>
 									<div class="card-body">
-											<form action = "codeGroupUpdtDel" method="post">
+										<form action = "codeDelete" method="post">
 
 										<!-- Row start -->
 										<div class="row gx-3">
 											<div class="col-sm-6 col-12">
 												<div class="was-validated">
 													<label for="validationCustom01" class="form-label">seq</label>
-													<input type="text" class="form-control" id="validationCustom01" th:value="${item.name}" required=""
+													<input type="text" class="form-control" id="validationCustom01" 
+													th:value="${item.seq}" required=""
 													name = "seq">
 												</div>
 											</div>
@@ -547,17 +548,17 @@
 												<div class="was-validated">
 													<label for="validationCustom01" class="form-label">name</label>
 													<input type="text" class="form-control" id="validationCustom01" th:value="${item.name}" required=""
-													name = "name">
+													name = "name" >
 												</div>
 											</div>
 											
 										</div>
 										<!-- Form actions footer start -->
 										<div class="form-actions-footer">
-												<button class="btn btn-light" data-bs-toggle="modal"
-												data-bs-target="#exampleModal1 ">Cancel</button>
+												<button class="btn btn-light"><a th:href="@{codeXdmList}" th:text="뒤로"></a></button>
+												
 												<button class="btn btn-success submit" data-bs-toggle="modal"
-												data-bs-target="#exampleModal2 ">Submit</button>
+												data-bs-target="#exampleModal2 ">데이터 수정</button>
 											
 										</div>
 										<!-- Form actions footer end -->
