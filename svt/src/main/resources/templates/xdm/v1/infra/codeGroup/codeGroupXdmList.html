@@ -782,11 +782,12 @@
 													<th><input type='checkbox'
 														name='RowCheck' 
 														th:value='${list.seq}'/></th>
-													<td th:text="${list.seq}">
+													<td th:text="${list.seq}" name = "seq" id = "seq">
 <!--														<a th:href="@{/codeGroupDelForm(seq=${list.seq},name=${list.name})}" th:text="${list.seq}"></a>-->
 													</td>
 													<td>
-														<a th:href="@{/codeGroupForm(seq=${list.seq},name=${list.name})}" th:text="${list.name}"></a>
+														<a th:href="@{/codeGroupForm(seq=${list.seq},name=${list.name})}" th:text="${list.name}"
+														name = "name" id = "name">></a>
 													</td>
 													<td th:if="${list.delYn eq 1}">Y</td>
     												<td th:unless="${list.delYn eq 1}">N</td>

@@ -537,18 +537,18 @@
 										<!-- Row start -->
 										<div class="row gx-3" style="margin-bottom: 30px;">
 											<div class="col-sm-6 col-12">
-												<div class="was-validated">
-													<label for="validationCustom01" class="form-label">seq</label>
-													<input type="text" class="form-control" id="validationCustom01" value="" required=""
+													<label class="form-label">seq</label>
+													<input type="text" class="form-control " id="seq" value="" 
 													name = "seq">
-												</div>
+												
 											</div>
 											<div class="col-sm-6 col-12">
-												<div class="was-validated">
-													<label for="validationCustom01" class="form-label">name</label>
-													<input type="text" class="form-control" id="validationCustom01" value="" required=""
+<!-- 												<div class="was-validated"> -->
+													<label class="form-label">name</label>
+													<input type="text" class="form-control" id="name" value="" 
 													name = "name">
-												</div>
+<!-- 												</div> -->
+
 											</div>
 											
 										</div>
@@ -557,8 +557,8 @@
 										<div class="form-actions-footer">
 												<button class="btn btn-light"><a th:href="@{codeGroupXdmList}" th:text="뒤로"></a></button>
 
-												<button class="btn btn-success submit" data-bs-toggle="modal"
-												data-bs-target="#exampleModal2 ">데이터추가</button>
+												<button class="btn btn-success" data-bs-toggle="modal"
+												data-bs-target="#exampleModal2 " id = "btnSubmit">데이터추가</button>
 											
 										</div>
 										<!-- Form actions footer end -->
@@ -612,7 +612,71 @@
 
 		<!-- Main Js Required -->
 		<script src="ddm/templates/max/design/assets/js/main.js"></script>
+<script>
+let form = document.querySelector("form[name=formList]");
 
+let goUrlXdmList = "/codeGroupXdmList";								/* ### */
+let goUrlXdmForm = "/codeGroupForm";								/* ### */
+	let goUrlXdmMultiUele = "/v1/infra/codegroup/codeGroupXdmMultiUele";			/* ### */
+let goUrlXdmMultiDele = "/v1/infra/codegroup/codeGroupXdmMultiDele";			/* ### */
+let goUrlXdmView = "/codeGroupView";								/* ### */
+
+let seq = document.querySelector("input[name=Seq]");									/* ### */
+
+
+document.getElementById("btnSubmit").onclick = function(){
+	
+	if(validationInst() == false) return false;
+	else{
+		form.action = goUrlXdmUpdt;
+		form.submit();
+	}
+	
+	
+	
+	if(seq.value == "0" || seq.value == ""){
+		form.action = goUrlXdmInst;
+		form.submit();
+
+	}else{
+		if(validationUpdt() == false) return false;
+		form.action = goUrlXdmUpdt;
+		form.submit();
+
+	}
+	
+}
+
+function validationInst(){
+	if(validationUpdt() == false) return false;
+	alert("validationInst");
+}
+
+function validationUpdt(){
+// 	alert("validationUpdt");
+// 	alert("name " + document.getElementById("name").value);
+
+	if(!nullToEmpty(document.getElementById("seq").value)){
+		document.getElementById("seq").setAttribute("class", "form-control is-invalid");
+		return false;
+	}
+	if(!nullToEmpty(document.getElementById("name").value)){
+		document.getElementById("name").setAttribute("class", "form-control is-invalid");
+		return false;
+	}
+	
+}
+nullToEmpty = function(value){
+	if(value == null || value == 'null' || value.length == 0){
+// 		document.getElementById("seq").focus();
+		return false;
+	}else{
+		return true;
+	}
+}
+
+
+</script>
 	</body>
 
 </html>

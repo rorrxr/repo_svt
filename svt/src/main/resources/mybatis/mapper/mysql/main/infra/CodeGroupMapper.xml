@@ -18,10 +18,10 @@
         WHERE 1=1
         <if test="delYn != null and !delYn.equals('')"></if>
          
-<!--				<choose>
-					<when test="shOptionDate == 1">AND a.insertDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-					<when test="shOptionDate == 2">AND a.deleteDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-				</choose>-->
+				<choose> 
+ 					<when test="shOptionDate == 1">AND a.insertDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+ 					<when test="shOptionDate == 2">AND a.deleteDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose>
          
         <choose>
             <when test="shOption == 1">AND a.seq = #{shValue}</when>

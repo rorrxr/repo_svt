@@ -616,6 +616,38 @@
 		<!-- Main Js Required -->
 		<script src="ddm/templates/max/design/assets/js/main.js"></script>
 
+<script>
+let form = document.querySelector("form[name=formList]");
+
+let goUrlXdmList = "/codeGroupXdmList";								/* ### */
+let goUrlXdmForm = "/codeGroupForm";								/* ### */
+	let goUrlXdmMultiUele = "/v1/infra/codegroup/codeGroupXdmMultiUele";			/* ### */
+let goUrlXdmMultiDele = "/v1/infra/codegroup/codeGroupXdmMultiDele";			/* ### */
+let goUrlXdmView = "/codeGroupView";								/* ### */
+
+
+document.getElementById("btnSubmit").onclick = function(){
+	if(seq.value == "0" || seq.value == ""){
+		form.action = goUrlXdmInst;
+		form.submit();
+	}else{
+		if(validationUpdt() == false) return false;
+		form.action = goUrlXdmUpdt;
+		form.submit();
+	}
+	
+}
+
+function validationInst(){
+	if(validationUpdt() == false) return false;
+	alert("validationInst");
+}
+
+function validationUpdt(){
+	alert("validationUpdt");
+}
+
+</script>
 	</body>
 
 </html>
