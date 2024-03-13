@@ -33,5 +33,10 @@ public class CodeService {
 	public int delete(CodeDto dto) {
 		return dao.delete(dto);
 	}
+	
+	public List<CodeDto> selectList(CodeVo vo) { 
+    	return dao.selectList(vo); 
+    }
+	
 }
 

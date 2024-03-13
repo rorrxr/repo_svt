@@ -12,5 +12,5 @@ public interface CodeDao {
 	public int update(CodeDto dto);
 	public int updateDelete(CodeDto dto);
 	public int delete(CodeDto dto);
-
+    public List<CodeDto> selectList(CodeVo vo);
 }

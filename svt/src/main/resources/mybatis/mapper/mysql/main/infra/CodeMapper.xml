@@ -18,6 +18,18 @@
            	<!-- (select count(aa.seq) from code aa where 1=1 and aa.cdDelNy = 0 and aa.codeGroup_seq = a.seq) as seqCount -->
          FROM code a
         WHERE 1=1
+        <if test="delYn != null and !delYn.equals('')"></if>
+         
+<!--				<choose>
+					<when test="shOptionDate == 1">AND a.insertDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.deleteDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose>-->
+         
+        <choose>
+            <when test="shOption == 1">AND a.seq = #{shValue}</when>
+            <when test="shOption == 2">AND a.name LIKE CONCAT('%',#{shValue},'%')</when>
+<!--            <when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when>
+-->        </choose>
         ORDER BY a.seq
     </select>
     

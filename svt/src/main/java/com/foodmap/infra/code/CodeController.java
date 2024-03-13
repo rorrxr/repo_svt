@@ -7,18 +7,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.foodmap.infra.codeGroup.CodeGroupDto;
+
 
 @Controller
 public class CodeController {
 	@Autowired
 	CodeService service;
 	
+//	@RequestMapping(value = "/codeXdmList")
+//	public String codeXdmList(Model model) throws Exception{
+//		model.addAttribute("list", service.selectList());
+//		
+//		return "xdm/v1/infra/ddm/tables2";
+//	}
+	
 	@RequestMapping(value = "/codeXdmList")
-	public String codeXdmList(Model model) throws Exception{
-		model.addAttribute("list", service.selectList());
-		
-		return "xdm/v1/infra/ddm/tables2";
+	public String codeXdmList(CodeVo vo, Model model) throws Exception{
+	
+//		model.addAttribute("list", service.selectList(vo));
+
+		model.addAttribute("list", service.selectList(vo));
+
+		model.addAttribute("vo", vo);
+
+		return "xdm/v1/infra/code/codeXdmList";
 	}
 	
 
