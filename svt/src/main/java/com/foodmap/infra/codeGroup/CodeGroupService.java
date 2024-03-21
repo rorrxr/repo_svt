@@ -16,15 +16,12 @@ public class CodeGroupService {
 	CodeGroupDao dao;
 //	CodeGroupDao dao = new CodeGroupDao();
 	
-//	public List<CodeGroupDto> selectList(){
-//		
-//		List<CodeGroupDto> list = dao.selectList();
-//		
-//		return list;
-//	}
+	public List<CodeGroupDto> selectList(CodeGroupVo vo){
+		
+		
+		return dao.selectList(vo);
+	}
 	
-	public List<CodeGroupDto> selectList(){ return dao.selectList();}
-
 //	public CodeGroupDto selectOne(CodeGroupDto dto) {
 //		CodeGroupDto codeGroupDto = dao.selectOne(dto);
 //		return codeGroupDto;
@@ -60,7 +57,4 @@ public class CodeGroupService {
 		// TODO Auto-generated method stub
 		return dao.delete(dto);
 	}
-    public List<CodeGroupDto> selectList(CodeGroupVo vo) { 
-    	return dao.selectList(vo); 
-    }
 }

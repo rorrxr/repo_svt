@@ -1,6 +1,8 @@
 package com.foodmap.infra.code;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CodeDto {
 	private String seq;
@@ -11,6 +13,9 @@ public class CodeDto {
 
 	private String codeGroup_seq;
 	private String codeGroupName;
+	
+	public static List<CodeDto> cachedCodeArrayList = new ArrayList<CodeDto>();
+	
 	//---
 	public String getSeq() {
 		return seq;

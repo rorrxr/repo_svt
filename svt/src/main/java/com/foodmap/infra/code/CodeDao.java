@@ -1,5 +1,6 @@
 package com.foodmap.infra.code;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -13,4 +14,6 @@ public interface CodeDao {
 	public int updateDelete(CodeDto dto);
 	public int delete(CodeDto dto);
     public List<CodeDto> selectList(CodeVo vo);
+
+	public ArrayList<CodeDto> selectListCachedCodeArrayList();
 }

@@ -78,6 +78,16 @@
         delete from code
         where seq = #{seq} 
     </delete> 
-    
+    	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+		SELECT 
+			a.seq
+			,a.name
+			,a.codeGroup_seq
+		FROM
+			code a
+		WHERE 1=1
+			AND a.delNy = 0
+<!-- 		    AND ifcdUseNy = 1 -->
+   </select>
 	  
 </mapper>

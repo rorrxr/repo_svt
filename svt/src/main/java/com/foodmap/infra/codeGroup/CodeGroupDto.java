@@ -1,6 +1,6 @@
 package com.foodmap.infra.codeGroup;
 
-import java.util.Date;
+import java.util.*;
 
 // getter setter
 public class CodeGroupDto {
@@ -10,7 +10,7 @@ public class CodeGroupDto {
 	private Date updateDate;
 	private Integer delNy;
 	private Integer seqCount;
-	
+		
 	public String getSeq() {
 		return seq;
 	}

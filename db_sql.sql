@@ -50,11 +50,20 @@ CREATE TABLE IF NOT EXISTS `pro_food`.`member` (
   `genderCD` INT NULL,
   `pwCreate` VARCHAR(45) NULL,
   `pwCheck` VARCHAR(45) NULL,
-  `registerYn` TINYINT NULL,
-  `memberYn` TINYINT NULL,
+  `registerNy` TINYINT NULL,
+  `memberNy` TINYINT NULL,
+  `insertDate` DATETIME NULL,
+  `updateDate` DATETIME NULL,
+  `delNy` TINYINT NULL,
+  
   PRIMARY KEY (`seq`))
 ENGINE = InnoDB
 ;
+DROP TABLE member;
+DROP TABLE mypage_orderlist;
+drop table restaurant;
+drop table wishlist;
+drop table review_list;
 
 CREATE TABLE IF NOT EXISTS `pro_food`.`restaurant` (
   `seq` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -71,7 +80,9 @@ CREATE TABLE IF NOT EXISTS `pro_food`.`restaurant` (
   `timetable` VARCHAR(5000) NULL,
   `menuList` VARCHAR(1000) NULL,
   `menuImage` VARCHAR(1000) NULL,
-  `delYn` TINYINT NULL,
+   `insertDate` DATETIME NULL,
+  `updateDate` DATETIME NULL,
+  `delNy` TINYINT NULL,
   PRIMARY KEY (`seq`))
 ENGINE = InnoDB
 ;
@@ -86,6 +97,9 @@ CREATE TABLE IF NOT EXISTS `pro_food`.`mypage_orderlist` (
   `easyOrderCD` INT NULL,
   `member_seq` INT UNSIGNED NOT NULL,
   `food_seq` INT UNSIGNED NOT NULL,
+   `insertDate` DATETIME NULL,
+  `updateDate` DATETIME NULL,
+  `delNy` TINYINT NULL,
   PRIMARY KEY (`seq`),
   INDEX `fk_mypage_orderlist_member1_idx` (`member_seq` ASC) VISIBLE,
   INDEX `fk_mypage_orderlist_food1_idx` (`food_seq` ASC) VISIBLE,
@@ -102,11 +116,14 @@ CREATE TABLE IF NOT EXISTS `pro_food`.`mypage_orderlist` (
 ENGINE = InnoDB
 ;
 
+
 CREATE TABLE IF NOT EXISTS `pro_food`.`wishlist` (
   `seq` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `delYn` INT NULL,
-  `likeYn` INT NULL,
-  `list_seq` INT UNSIGNED NOT NULL,
+  `likeNy` TINYINT NULL,
+   `insertDate` DATETIME NULL,
+  `updateDate` DATETIME NULL,
+  `delNy` TINYINT NULL,
+    `list_seq` INT UNSIGNED NOT NULL,
   `member_seq` INT NULL,
   PRIMARY KEY (`seq`),
   INDEX `fk_wishlist_list1_idx` (`list_seq` ASC) VISIBLE,
@@ -125,7 +142,9 @@ CREATE TABLE IF NOT EXISTS `pro_food`.`review_list` (
   `reviewDate` DATETIME NULL,
   `reviewerName` VARCHAR(45) NULL,
   `reviewerImage` VARCHAR(45) NULL,
-  `delYn` TINYINT NULL,
+   `insertDate` DATETIME NULL,
+  `updateDate` DATETIME NULL,
+  `delNy` TINYINT NULL,
   `food_seq` INT UNSIGNED NOT NULL,
   INDEX `fk_review_list_food1_idx` (`food_seq` ASC) VISIBLE,
   PRIMARY KEY (`seq`),
@@ -209,8 +228,9 @@ birthday,
 genderCD, 
 pwCreate, 
 pwCheck, 
-registerYn, 
-memberYn
+registerNy, 
+memberNy,
+delNy
  )value(
  3,
  '홍',
@@ -221,7 +241,8 @@ memberYn
  '1234',
  '1234',
  1,
- 1
+ 1,
+ 0
  );
  
   insert into member(
@@ -234,8 +255,9 @@ birthday,
 genderCD, 
 pwCreate, 
 pwCheck, 
-registerYn, 
-memberYn
+registerNy, 
+memberNy,
+delNy
  )value(
  3,
  '김',
@@ -246,7 +268,8 @@ memberYn
  '4567',
  '4567',
  1,
- 1
+ 1,
+ 0
  );
  
  
