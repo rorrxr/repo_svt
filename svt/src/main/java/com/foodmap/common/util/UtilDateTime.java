@@ -1,11 +1,11 @@
-package com.foodmap.util;
+package com.foodmap.common.util;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-import com.foodmap.constants.Constants;
+import com.foodmap.common.constants.Constants;
 
 public class UtilDateTime {
 

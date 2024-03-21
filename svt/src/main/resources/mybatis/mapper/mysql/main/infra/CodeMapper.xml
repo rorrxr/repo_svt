@@ -11,19 +11,19 @@
             a.seq
             ,a.name
             ,a.insertDate
-            ,a.deleteDate
-            ,a.delYn
+            ,a.updateDate
+            ,a.delNy
             ,a.codeGroup_seq
 			,(select aa.name from codeGroup aa where 1=1 and aa.seq = a.codeGroup_seq) as codeGroupName
            	<!-- (select count(aa.seq) from code aa where 1=1 and aa.cdDelNy = 0 and aa.codeGroup_seq = a.seq) as seqCount -->
          FROM code a
         WHERE 1=1
-        <if test="delYn != null and !delYn.equals('')"></if>
+        <if test="shDelNy != null and !shDelNy.equals('')">and a.delNy = #{shDelNy}</if>
          
-<!--				<choose>
+				<choose>
 					<when test="shOptionDate == 1">AND a.insertDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-					<when test="shOptionDate == 2">AND a.deleteDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-				</choose>-->
+					<when test="shOptionDate == 2">AND a.updateDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose>
          
         <choose>
             <when test="shOption == 1">AND a.seq = #{shValue}</when>
@@ -38,8 +38,8 @@
             a.seq
             ,a.name
             ,a.insertDate
-            ,a.deleteDate
-            ,a.delYn
+            ,a.updateDate
+            ,a.delNy
             ,a.codeGroup_seq
          FROM code a
         WHERE 1=1
@@ -50,8 +50,8 @@
         INSERT INTO code(
             name,
             insertDate,
-            deleteDate,
-            delYn,
+            updateDate,
+            delNy,
             codeGroup_seq
          )VALUES(
          	#{name},

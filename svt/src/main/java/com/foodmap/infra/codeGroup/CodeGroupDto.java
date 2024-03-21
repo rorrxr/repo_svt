@@ -7,8 +7,8 @@ public class CodeGroupDto {
 	private String seq;
 	private String name;
 	private Date insertDate;
-	private Date deleteDate;
-	private Integer delYn;
+	private Date updateDate;
+	private Integer delNy;
 	private Integer seqCount;
 	
 	public String getSeq() {
@@ -29,17 +29,17 @@ public class CodeGroupDto {
 	public void setInsertDate(Date insertDate) {
 		this.insertDate = insertDate;
 	}
-	public Date getDeleteDate() {
-		return deleteDate;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
-	public void setDeleteDate(Date deleteDate) {
-		this.deleteDate = deleteDate;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
-	public Integer getDelYn() {
-		return delYn;
+	public Integer getDelNy() {
+		return delNy;
 	}
-	public void setDelYn(Integer delYn) {
-		this.delYn = delYn;
+	public void setDelNy(Integer delNy) {
+		this.delNy = delNy;
 	}
 	public Integer getSeqCount() {
 		return seqCount;
@@ -47,6 +47,7 @@ public class CodeGroupDto {
 	public void setSeqCount(Integer seqCount) {
 		this.seqCount = seqCount;
 	}
+	
 	
 	
 }

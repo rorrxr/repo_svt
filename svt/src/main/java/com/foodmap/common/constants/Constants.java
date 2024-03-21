@@ -1,4 +1,4 @@
-package com.foodmap.constants;
+package com.foodmap.common.constants;
 
 public final class Constants {
 

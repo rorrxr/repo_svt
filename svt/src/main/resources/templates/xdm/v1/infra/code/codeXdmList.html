@@ -696,10 +696,10 @@
 										<form name="formList" id="formList" method="get" autocomplete="off">
 											<div class="row">
 											<div class="col-2 gy-2" style="padding-left: 2%;">
-												<select id="shDelete" name="shDelete" class="form-select form-select-sm">
-													<option value="" th:selected="${vo.shDelete == null}">삭제여부</option>
-													<option value="1" th:selected="${vo.shDelete == 1}">Y</option>
-													<option value="0" th:selected="${vo.shDelete == 0}">N</option>
+												<select id="shDelNy" name="shDelNy" class="form-select form-select-sm">
+													<option value="" th:selected="${vo.shDelNy == null}">삭제여부</option>
+													<option value="1" th:selected="${vo.shDelNy == 1}">Y</option>
+													<option value="0" th:selected="${vo.shDelNy == 0}">N</option>
 												</select>
 														
 											</div>
@@ -765,8 +765,10 @@
 														name='allCheck' /></th>
 													<th>코드seq</th>
 													<th>코드이름</th>
-													<th>delYn</th>
+													<th>delNy</th>
 													<th>insertDate</th>
+													<th>updateDate</th>
+													
 												</tr>
 											</thead>
 											<tbody>
@@ -781,9 +783,11 @@
 													<td>
 														<a th:href="@{/codeForm(seq=${list.seq},name=${list.name})}" th:text="${list.name}"></a>
 													</td>
-													<td th:if="${list.delYn eq 1}">Y</td>
-    												<td th:unless="${list.delYn eq 1}">N</td>
+													<td th:if="${list.delNy eq 1}">Y</td>
+    												<td th:unless="${list.delNy eq 1}">N</td>
 													<td th:text="${#dates.format(list.insertDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+													<td th:text="${#dates.format(list.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+													
 													</td>
 												</tr>
 												</c:forEach>

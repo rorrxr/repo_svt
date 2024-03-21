@@ -1,11 +1,14 @@
 package com.foodmap.infra.code;
 
+import com.foodmap.common.*;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.foodmap.common.util.UtilFunction;
 
 
 
@@ -25,6 +28,8 @@ public class CodeController {
 	public String codeXdmList(CodeVo vo, Model model) throws Exception{
 	
 //		model.addAttribute("list", service.selectList(vo));
+
+		UtilFunction.setSearch(vo);
 
 		model.addAttribute("list", service.selectList(vo));
 

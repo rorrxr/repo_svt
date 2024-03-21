@@ -6,13 +6,12 @@ public class CodeDto {
 	private String seq;
 	private String name;
 	private Date insertDate;
-	private Date deleteDate;
-	private Integer delYn;
+	private Date updateDate;
+	private Integer delNy;
 
 	private String codeGroup_seq;
 	private String codeGroupName;
 	//---
-	
 	public String getSeq() {
 		return seq;
 	}
@@ -31,24 +30,17 @@ public class CodeDto {
 	public void setInsertDate(Date insertDate) {
 		this.insertDate = insertDate;
 	}
-	public Date getDeleteDate() {
-		return deleteDate;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
-	public void setDeleteDate(Date deleteDate) {
-		this.deleteDate = deleteDate;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
-	public Integer getDelYn() {
-		return delYn;
+	public Integer getDelNy() {
+		return delNy;
 	}
-	public void setDelYn(Integer delYn) {
-		this.delYn = delYn;
-	}
-	
-	public String getCodeGroupName() {
-		return codeGroupName;
-	}
-	public void setCodeGroupName(String codeGroupName) {
-		this.codeGroupName = codeGroupName;
+	public void setDelNy(Integer delNy) {
+		this.delNy = delNy;
 	}
 	public String getCodeGroup_seq() {
 		return codeGroup_seq;
@@ -56,7 +48,12 @@ public class CodeDto {
 	public void setCodeGroup_seq(String codeGroup_seq) {
 		this.codeGroup_seq = codeGroup_seq;
 	}
-
+	public String getCodeGroupName() {
+		return codeGroupName;
+	}
+	public void setCodeGroupName(String codeGroupName) {
+		this.codeGroupName = codeGroupName;
+	}
 	
 }
 
