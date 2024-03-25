@@ -65,7 +65,7 @@ public class CodeService {
 	public static List<CodeDto> selectListCachedCode(String seq) throws Exception {
 		List<CodeDto> rt = new ArrayList<CodeDto>();
 		for(CodeDto codeRow : CodeDto.cachedCodeArrayList) {
-			if (codeRow.getSeq().equals(seq)) {
+			if (codeRow.getCodeGroup_seq().equals(seq)) {
 				rt.add(codeRow);
 			} else {
 				// by pass

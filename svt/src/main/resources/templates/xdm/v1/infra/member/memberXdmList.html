@@ -798,14 +798,14 @@
 													<td th:text="${list.seq}" name = "seq" id = "seq">
 <!--														<a th:href="@{/memberDelForm(seq=${list.seq},name=${list.name})}" th:text="${list.seq}"></a>-->
 													</td>
-													<td th:text="${list.easyLogin}"></td>
+													<td th:text="${list.easyLoginCD}"></td>
 													<td th:text="${list.firstName}">
 <!--  														<a th:href="@{/memberForm(seq=${list.seq},name=${list.name})}" th:text="${list.name}" name = "name" id = "name">></a> -->
 <!-- 														<a th:text="${list.firstName}" name = "name" id = "name">></a> -->
 													</td>
 													<td th:text="${list.lastName}"></td>
 													<td th:text="${list.email}"></td>
-													<td th:text="${list.birthday}"></td>
+													<td th:text="${#dates.format(list.birthday, 'yyyy-MM-dd')}"></td>													
 <!-- 													<td th:text="${list.genderCD}"></td> -->
 													<td th:if="${list.genderCD != null}" th:text="${@codeService.selectOneCachedCode(list.genderCD)}" class="genderCD align-middle"></td>
 													<td th:unless="${list.genderCD != null}" class="genderCD align-middle"></td>

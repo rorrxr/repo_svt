@@ -14,6 +14,8 @@ public class MemberService {
 		return dao.selectList(vo);
 	}
 	
+	
+	
 //	public MemberDto selectOne(MemberDto dto) {
 //		// TODO Auto-generated method stub
 //		return dao.selectOne(dto);

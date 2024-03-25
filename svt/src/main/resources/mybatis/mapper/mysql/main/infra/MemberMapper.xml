@@ -7,20 +7,21 @@
 
     <select id="selectList" resultMap="resultMapObj">
         SELECT
-            a.seq,
-			a.easyLoginCD,
-			a,firstName,
-			a.lastName,
-			a.email,
-			a.birthday,
-			a.genderCD,
-			a.pwCreate,
-			a.pwCheck,
-			a.registerNy,
-			a.memberNy,
-			a.insertDate,
-			a.updateDate,
-			a.delNy
+            a.seq, 
+            a.easyLoginCD, 
+            a.firstName, 
+            a.lastName, 
+            a.email, 
+            a.birthday, 
+            a.genderCD, 
+            a.pwCreate, 
+            a.pwCheck, 
+            a.registerNy, 
+            a.memberNy, 
+            a.insertDate, 
+            a.updateDate, 
+            a.delNy
+            
            	<!-- (select count(aa.seq) from code aa where 1=1 and aa.cdDelNy = 0 and aa.codeGroup_seq = a.seq) as seqCount -->
          FROM member a
         WHERE 1=1

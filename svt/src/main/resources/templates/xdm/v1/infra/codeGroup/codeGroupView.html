@@ -538,17 +538,13 @@
 										<div class="row gx-3" style="margin-bottom: 30px;">
 											<div class="col-sm-6 col-12">
 													<label class="form-label">seq</label>
-													<input type="text" class="form-control " id="seq" value="" 
-													name = "seq">
-												
+													<input type="text" class="form-control " id="seq" th:value="${item?.seq}"value="" name = "seq">
+													<div class="invalid-feedback" id="seqFeedback"></div>
 											</div>
 											<div class="col-sm-6 col-12">
-<!-- 												<div class="was-validated"> -->
-													<label class="form-label">name</label>
-													<input type="text" class="form-control" id="name" value="" 
-													name = "name">
-<!-- 												</div> -->
-
+													<label for="name" class="form-label fs--1">name<span class="text-danger fs-0">*</span></label>
+													<input type="text" class="form-control" id="name" th:value="${item?.name}" maxlength="20" placeholder="한글, 영대소문자, 숫자">
+													<div class="invalid-feedback" id="nameFeedback"></div>
 											</div>
 											
 										</div>
@@ -556,10 +552,9 @@
 										<!-- Form actions footer start -->
 										<div class="form-actions-footer">
 												<button class="btn btn-light"><a th:href="@{codeGroupXdmList}" th:text="뒤로"></a></button>
-
 												<button class="btn btn-success" data-bs-toggle="modal"
 												data-bs-target="#exampleModal2 " id = "btnSubmit">데이터추가</button>
-											
+												
 										</div>
 										<!-- Form actions footer end -->
 										</form>
@@ -612,6 +607,7 @@
 
 		<!-- Main Js Required -->
 		<script src="ddm/templates/max/design/assets/js/main.js"></script>
+		<script src="usr/js/validationXdm.js"></script>
 <script>
 let form = document.querySelector("form[name=formList]");
 
@@ -649,7 +645,7 @@ document.getElementById("btnSubmit").onclick = function(){
 
 function validationInst(){
 	if(validationUpdt() == false) return false;
-	alert("validationInst");
+// 	alert("validationInst");
 }
 
 function validationUpdt(){
@@ -660,11 +656,25 @@ function validationUpdt(){
 // 		document.getElementById("seq").setAttribute("class", "form-control is-invalid");
 // 		return false;
 // 	}
-	if(!nullToEmpty(document.getElementById("name").value)){
-		document.getElementById("name").setAttribute("class", "form-control is-invalid");
-		return false;
-	}
-	
+// 	if(!nullToEmpty(document.getElementById("name").value)){
+// 		document.getElementById("name").setAttribute("class", "form-control is-invalid");
+// 		return false;
+// 	}
+
+			if(!checkSelectNull('seq', 2, "코드그룹을 선택해 주세요.")) return false;
+// 			if(!checkOnlyEnglishNumber('ifcdSeqAnother', 2, 1, "코드 (Another)는 영대소문자, 숫자만 입력 가능합니다.")) return false;
+			if(!checkOnlyKoreanEnglishNumber('name', 2, 0, "코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")) return false;
+// 			if(!checkOnlyEnglishNumber('ifcdNameEng', 2, 1, "코드 이름 (영문)는 영대소문자, 숫자만 입력 가능합니다.")) return false;
+// 			if(!checkOnlyNumber('ifcdOrder', 2, 0, 1, 0, 255, "순서는 숫자(0~255)만 입력 가능합니다.")) return false;
+// 			if(!checkOnlyEnglishNumber('ifcdReferenceV1', 2, 1, "예비1 (varchar type)은 영문대소문자, 숫자만 입력 가능합니다.")) return false;
+// 			if(!checkOnlyEnglishNumber('ifcdReferenceV2', 2, 1, "예비2 (varchar type)은 영문대소문자, 숫자만 입력 가능합니다.")) return false;
+// 			if(!checkOnlyEnglishNumber('ifcdReferenceV3', 2, 1, "예비3 (varchar type)은 영문대소문자, 숫자만 입력 가능합니다.")) return false;
+// 			if(!checkOnlyEnglishNumber('ifcdReferenceV4', 2, 1, "예비4 (varchar type)은 영문대소문자, 숫자만 입력 가능합니다.")) return false;		
+// 			if(!checkOnlyNumber('ifcdReferenceI1', 2, 1, 1, -128, 127, "예비1 (Int type)은 숫자(-128~127)만 입력 가능합니다.")) return false;
+// 			if(!checkOnlyNumber('ifcdReferenceI2', 2, 1, 1, -128, 127, "예비2 (Int type)은 숫자(-128~127)만 입력 가능합니다.")) return false;
+// 			if(!checkOnlyNumber('ifcdReferenceI3', 2, 1, 1, -128, 127, "예비3 (Int type)은 숫자(-128~127)만 입력 가능합니다.")) return false;
+// 			if(!checkOnlyNumber('ifcdReferenceI4', 2, 1, 1, -128, 127, "예비4 (Int type)은 숫자(-128~127)만 입력 가능합니다.")) return false;
+
 }
 nullToEmpty = function(value){
 	if(value == null || value == 'null' || value.length == 0){
