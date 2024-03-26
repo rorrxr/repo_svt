@@ -1,7 +1,6 @@
 package com.foodmap.infra.codeGroup;
 
-import com.foodmap.common.*;
-import com.foodmap.common.util.UtilFunction;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,12 +8,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.foodmap.common.util.UtilFunction;
+
 @Controller
 public class CodeGroupController {
 	
 	@Autowired
 	CodeGroupService service;
 //	CodeGroupService codeGroupService;
+	
+	public static int pageSIZE = 10;
+	public static int totalRecord = 0;
+	public static int totalPage = 1;
 	
 //	@RequestMapping(value = "/codeGroupXdmList")
 //	public String codeGroupXdmList(Model model) throws Exception{
@@ -100,10 +105,19 @@ public class CodeGroupController {
 	public String codeGroupXdmList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception{
 	
 //		model.addAttribute("list", service.selectList(vo));
-
+		
+//		int count = service.selectOneCount();
+		model.addAttribute("list", service.selectOneCount());		
+//		vo.setParamsPaging(count);
+//		
+//		if(count != 0) {
+//			List<CodeGroupDto> list = service.selectList(vo);
+//			model.addAttribute("list", list);
+//		} else {
+//		}
+//		
 		
 		UtilFunction.setSearch(vo);
-		
 		model.addAttribute("list", service.selectList(vo));
 
 //		model.addAttribute("vo", vo);
@@ -142,5 +156,7 @@ public class CodeGroupController {
 //		return "redirect:/codeGroupXdmList";
 //	}
 //	
+
+	
 
 }

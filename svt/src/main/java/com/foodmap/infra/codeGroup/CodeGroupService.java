@@ -1,12 +1,9 @@
 package com.foodmap.infra.codeGroup;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.foodmap.infra.code.CodeDto;
 
 @Service
 public class CodeGroupService {
@@ -57,4 +54,10 @@ public class CodeGroupService {
 		// TODO Auto-generated method stub
 		return dao.delete(dto);
 	}
+
+	
+	public int selectOneCount() throws Exception{
+		return dao.selectOneCount();
+	}
+	
 }

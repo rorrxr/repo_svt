@@ -76,14 +76,56 @@
         where seq = #{seq} 
     </delete> 
     
-    <select id="selectListWithoutPaging" resultMap="resultMapObj">
-		SELECT
-			a.seq
-			,a.name
-		FROM codegroup a
+
+	
+	<sql id ="selectCommon">
+		FROM codeGroup a
+<!-- 			LEFT JOIN codeGroup b on b.seq = a.seq -->
 		WHERE 1=1
-			AND delNy = 0
-<!-- 			And ifcgUseNy = 1 -->
-		ORDER BY a.seq DESC
+<!-- 			<if test="shUseNy != null and !shUseNy.equals('')">AND ifcdUseNy = #{shUseNy}</if> -->
+			<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
+        
+				<choose>
+					<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose>
+<!--      -->
+			<choose>
+				<when test="shOption == 1">AND a.seq = #{shValue}</when>
+				<when test="shOption == 2">AND a.name = #{shValue</when>
+				<when test="shOption == 3">AND a.insertDate = #{shValue}</when>
+				<when test="shOption == 4">AND a.updateDate = #{shValue}</when>
+				<when test="shOption == 5">AND a.delNy= #{shValue}</when>
+<!-- 				<when test="shOption == 6">AND a.ifcdNameEng LIKE CONCAT('%',#{shValue},'%')</when> -->
+			</choose>
+	</sql>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
+	
+<!-- 		<sql id="selectListUpperForMysql"> -->
+<!-- 		select aa.* from ( -->
+<!-- 	</sql> -->
+	
+	
+<!-- 	<sql id="selectListLowerForMysql">	 -->
+<!-- 		) aa -->
+<!-- 		limit #{rowNumToShow} offset #{startRnumForMysql} -->
+<!-- 	</sql> -->
+<!-- 	<select id="selectOne" resultMap="resultMapObj"> -->
+<!-- 		<include refid="selectListUpperForMysql" />	 -->
+<!-- 			SELECT -->
+<!-- 				a.seq -->
+<!-- 	            ,a.name -->
+<!-- 	            ,a.insertDate -->
+<!-- 	            ,a.updateDate -->
+<!-- 	            ,a.delNy -->
+<!-- 				<include refid="selectRegModWithAlies" /> -->
+<!-- 			<include refid="selectCommon" /> -->
+<!-- 			ORDER BY a.seq -->
+<!-- 			<include refid="orderByLimitForMysql" /> -->
+<!-- 		<include refid="selectListLowerForMysql" /> -->
+<!-- 	</select> -->
 </mapper>
