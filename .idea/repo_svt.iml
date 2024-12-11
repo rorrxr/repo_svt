@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/svt/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/svt/.settings" />
+      <excludeFolder url="file://$MODULE_DIR$/svt/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/svt/src/main/resources/static/ddm/css" />
+      <excludeFolder url="file://$MODULE_DIR$/svt/src/main/resources/static/ddm/jquery" />
+      <excludeFolder url="file://$MODULE_DIR$/svt/src/main/resources/static/ddm/js" />
+      <excludeFolder url="file://$MODULE_DIR$/svt/src/main/resources/static/usr/css" />
+      <excludeFolder url="file://$MODULE_DIR$/svt/src/main/resources/static/usr/jquery" />
+      <excludeFolder url="file://$MODULE_DIR$/svt/src/main/resources/static/usr/templates/panagea_v.3.0/html/project_html" />
+      <excludeFolder url="file://$MODULE_DIR$/svt/src/main/resources/templates/xdm/v1/infra/index" />
+      <excludeFolder url="file://$MODULE_DIR$/svt/src/main/resources/templates/xdm/v1/infra/user" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
