@@ -39,5 +39,9 @@ out/
 ### by minju ###
 application-external.properties
 
-!**/src/main/resources/templates
+src/main/resources/templates/xdm/v1/infra/
+
+
+
+
 
