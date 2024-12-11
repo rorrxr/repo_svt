@@ -38,3 +38,6 @@ out/
 
 ### by minju ###
 application-external.properties
+
+!**/src/main/resources/templates
+

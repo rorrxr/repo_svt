@@ -3,21 +3,21 @@ package com.foodmap.infra.codeGroup;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CodeGroupService {
 //	CodeGroupDao codeGroupDao;
 	
+	
 	@Autowired
 	CodeGroupDao dao;
 //	CodeGroupDao dao = new CodeGroupDao();
 	
 	public List<CodeGroupDto> selectList(CodeGroupVo vo){
-		
-		
 		return dao.selectList(vo);
-	}
+	}	
 	
 //	public CodeGroupDto selectOne(CodeGroupDto dto) {
 //		CodeGroupDto codeGroupDto = dao.selectOne(dto);
@@ -57,6 +57,8 @@ public class CodeGroupService {
 
 	
 	public int selectOneCount() throws Exception{
+		
+		
 		return dao.selectOneCount();
 	}
 	

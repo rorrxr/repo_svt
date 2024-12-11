@@ -1,8 +1,9 @@
 package com.foodmap.infra.codeGroup;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -102,7 +103,7 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "/codeGroupXdmList")
-	public String codeGroupXdmList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception{
+	public String codeGroupXdmList(@ModelAttribute("vo") CodeGroupVo vo, Model model,@PageableDefault(size = 10) Pageable pageable) throws Exception{
 	
 //		model.addAttribute("list", service.selectList(vo));
 		
@@ -118,6 +119,8 @@ public class CodeGroupController {
 //		
 		
 		UtilFunction.setSearch(vo);
+		
+
 		model.addAttribute("list", service.selectList(vo));
 
 //		model.addAttribute("vo", vo);

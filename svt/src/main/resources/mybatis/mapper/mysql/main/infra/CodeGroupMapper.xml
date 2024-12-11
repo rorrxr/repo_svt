@@ -19,7 +19,7 @@
         <if test="shDelNy != null and !shDelNy.equals('')">and a.delNy = #{shDelNy}</if>
          
 				<choose> 
- 					<when test="shOptionDate == 1">AND a.insertDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+ 					<when test="shOptionDate == 1">AND a.insertDWate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
  					<when test="shOptionDate == 2">AND a.updateDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 				</choose>
          
