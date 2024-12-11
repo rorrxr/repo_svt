@@ -40,6 +40,18 @@ out/
 application-external.properties
 
 src/main/resources/templates/xdm/v1/infra/
+# templates 디렉토리 제외
+src/main/resources/templates/xdm/v1/infra/code
+src/main/resources/templates/xdm/v1/infra/codeGroup
+src/main/resources/templates/xdm/v1/infra/ddm
+src/main/resources/templates/xdm/v1/infra/include
+src/main/resources/templates/xdm/v1/infra/index
+src/main/resources/templates/xdm/v1/infra/member
+src/main/resources/templates/xdm/v1/infra/user
+
+# static 디렉토리 제외
+src/main/resources/static/
+
 
 
 
